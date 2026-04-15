@@ -176,56 +176,46 @@ export default function App() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
               >
-                <Card className="banner-card overflow-hidden border-none shadow-lg group cursor-pointer relative aspect-[3/1] flex items-center bg-slate-900">
-                  {/* Background Layer */}
+                <Card className="banner-card overflow-hidden border-none shadow-2xl group cursor-pointer relative aspect-[1.8/1] flex flex-col bg-[#050505] rounded-xl">
+                  {/* Background Image Layer (Full Size) */}
                   <div className="absolute inset-0 z-0">
                     <img 
-                      src="https://images.unsplash.com/photo-1506318137071-a8e063b4999a?q=80&w=2070&auto=format&fit=crop" 
-                      alt="Starry Background"
-                      className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
+                      src="https://images.unsplash.com/photo-1639322537231-2f206e06af84?q=80&w=2064&auto=format&fit=crop" 
+                      alt="3D Logo Background"
+                      className="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-700"
                       referrerPolicy="no-referrer"
                     />
-                    <div className={`absolute inset-0 ${banner.bgColor || 'bg-slate-900'} mix-blend-multiply opacity-40`} />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
+                    <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-red-900/20 to-transparent opacity-30" />
                   </div>
                   
+                  {/* Top Right Actions */}
+                  <div className="absolute top-4 right-4 z-20">
+                    <button className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/30 backdrop-blur-md flex items-center justify-center text-white transition-all border border-white/10">
+                      <Download className="w-5 h-5" />
+                    </button>
+                  </div>
+
                   {/* Content Layer */}
-                  <div className="relative z-10 flex w-full h-full items-center px-8">
-                    {/* Logo Section */}
-                    <div className="w-1/3 flex justify-center items-center">
-                      <img 
-                        src={banner.logo} 
-                        alt={banner.brand}
-                        className="max-h-24 max-w-full object-contain drop-shadow-md group-hover:scale-110 transition-transform duration-500"
-                        referrerPolicy="no-referrer"
-                      />
+                  <div className="relative z-10 flex flex-col w-full h-full p-6">
+                    {/* Brand Identifier (Subtle) */}
+                    <div className="text-white/30 font-display font-bold text-xs uppercase tracking-widest">
+                      {banner.brand}
                     </div>
-                    
-                    {/* Text Section */}
-                    <div className="w-2/3 text-right flex flex-col justify-center">
-                      <h3 className="text-2xl md:text-3xl font-bold text-white mb-1 drop-shadow-sm">
+
+                    {/* Bottom Right Text Section */}
+                    <div className="flex flex-col items-end justify-end mt-auto">
+                      <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight leading-none drop-shadow-lg">
                         {name}
                       </h3>
-                      <p className="text-sm md:text-base text-white/90 font-medium drop-shadow-sm">
+                      <p className="text-xs md:text-sm text-white/70 font-medium mt-1 drop-shadow-md">
                         {email}
                       </p>
-                      {designation && (
-                        <p className="text-xs mt-2 uppercase tracking-widest text-white/70 font-semibold drop-shadow-sm">
-                          {designation}
-                        </p>
-                      )}
                     </div>
                   </div>
 
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4 z-20">
-                    <Button variant="secondary" size="sm" className="gap-2">
-                      <Download className="w-4 h-4" /> Download
-                    </Button>
-                    <Button variant="outline" size="sm" className="gap-2 bg-white/10 text-white border-white/20 hover:bg-white/20">
-                      <ExternalLink className="w-4 h-4" /> Preview
-                    </Button>
-                  </div>
+                  {/* Subtle Border Glow */}
+                  <div className="absolute inset-0 border border-white/5 rounded-xl pointer-events-none" />
                 </Card>
               </motion.div>
             ))}
